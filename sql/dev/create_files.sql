@@ -1,3 +1,5 @@
+Drop TABLE if EXISTS dbo.patients
+
 CREATE TABLE dbo.patients (
     patient_id INT PRIMARY KEY,
     name VARCHAR(100),
