@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "adls_to_azsql",
+				"name": "adls_to_azsql_get_strting_data",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
