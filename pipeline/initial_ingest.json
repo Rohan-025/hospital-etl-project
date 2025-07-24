@@ -1,0 +1,9 @@
+{
+	"name": "initial_ingest",
+	"properties": {
+		"folder": {
+			"name": "pipelines"
+		},
+		"annotations": []
+	}
+}
