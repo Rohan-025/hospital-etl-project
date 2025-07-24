@@ -1,0 +1,51 @@
+{
+	"name": "test_proj",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "test_project",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "sourcename",
+				"type": "varchar"
+			},
+			{
+				"name": "region",
+				"type": "varchar"
+			},
+			{
+				"name": "fileprefix",
+				"type": "varchar"
+			},
+			{
+				"name": "expectedformat",
+				"type": "varchar"
+			},
+			{
+				"name": "expectedschema",
+				"type": "nvarchar"
+			},
+			{
+				"name": "active",
+				"type": "bit"
+			},
+			{
+				"name": "lastprocesseddate",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Metadata_ingestion_Table"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

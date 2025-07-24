@@ -1,0 +1,12 @@
+{
+	"name": "hospital_csv_data_departments",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://rohannewaccount1.dfs.core.windows.net/",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEZGQjYxRTA2LUYxRjgtNEVDMy05NDcwLTg4Q0QyOUQ0MEVBNF9hODEyMDZiMy1mMjQ2LTQzOGQtYjQ5Mi05M2JjYjE0MTk4NGIiDQp9"
+		}
+	}
+}
