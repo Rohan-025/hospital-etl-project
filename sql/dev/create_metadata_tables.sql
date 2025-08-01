@@ -16,3 +16,28 @@ create table dbo.ADF_Load_Metadata (
     Active            BIT             -- enables/disables the mapping
 );
 
+INSERT into dbo.ADF_Load_Metadata(
+
+    SourceName,
+    FilePath,
+    FileFormat,
+    TargetSchema,
+    TargetTable,
+    StagingTable,
+    LoadType,
+    WatermarkColumn,
+    BusinessKey,
+    Active
+)
+values(
+    'Patient',
+    'raw/hospital/patient/*.csv',
+    'csv',
+    'dbo',
+    'patients',
+    'patients_stg',
+    'Full',
+    'ModifiedDate',
+    'patient_id',
+    1
+)
