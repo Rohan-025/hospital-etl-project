@@ -3,8 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "adls_to_azsql_get_strting_data",
-				"type": "Copy",
+				"name": "LookupMetaadata",
+				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -15,10 +15,25 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"enableStaging": false
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT TOP 1 * FROM dbo.ADF_Load_Metadata WHERE SourceName = '@{pipeline().parameters.SourceName}' AND Active = 1\n",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "AzureSQL_non_param",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
 				}
 			}
 		],
+		"parameters": {
+			"Sourcename": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "pipelines"
 		},
