@@ -1,0 +1,20 @@
+{
+	"name": "AzureSQL_hospital_table",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AzureSQL_Hospital",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tablename": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "datasets"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
