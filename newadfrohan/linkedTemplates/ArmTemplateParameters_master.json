@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "newadfrohan"
+		},
+		"LS_ADLS_Hospital_accountKey": {
+			"value": ""
+		},
+		"LS_ADLS_Hospital_properties_typeProperties_url": {
+			"value": "https://rohannewaccount1.dfs.core.windows.net/"
+		},
+		"LS_AzureSQL_Hospital_properties_typeProperties_server": {
+			"value": "projecthospitalserver.database.windows.net"
+		},
+		"LS_AzureSQL_Hospital_properties_typeProperties_database": {
+			"value": "project1hospital"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
