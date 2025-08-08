@@ -18,7 +18,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "SELECT TOP * FROM dbo.ADF_Load_Metadata WHERE Active = 1\n",
+							"value": "SELECT TOP 1 * FROM dbo.ADF_Load_Metadata WHERE Active = 1\n",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
