@@ -17,7 +17,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT TOP 1 * FROM dbo.ADF_Load_Metadata WHERE SourceName = '@{pipeline().parameters.SourceName}' AND Active = 1\n",
+						"sqlReaderQuery": {
+							"value": "SELECT TOP * FROM dbo.ADF_Load_Metadata WHERE Active = 1\n",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -29,11 +32,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"Sourcename": {
-				"type": "string"
-			}
-		},
 		"folder": {
 			"name": "pipelines"
 		},
