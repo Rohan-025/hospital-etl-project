@@ -1,6 +1,5 @@
 {
-	"name": "test_project",
-	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"name": "LS_AzureSQL_Hospital",
 	"properties": {
 		"annotations": [],
 		"type": "AzureSqlDatabase",
