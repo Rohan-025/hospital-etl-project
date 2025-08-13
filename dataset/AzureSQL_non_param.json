@@ -5,6 +5,9 @@
 			"referenceName": "LS_AzureSQL_Hospital",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "datasets"
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [

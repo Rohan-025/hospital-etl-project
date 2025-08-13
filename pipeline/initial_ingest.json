@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "LookupMetaadata",
+				"name": "initial_ingestion_lookup",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -17,10 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": {
-							"value": "SELECT TOP 1 * FROM dbo.ADF_Load_Metadata WHERE Active = 1\n",
-							"type": "Expression"
-						},
+						"sqlReaderQuery": "select *\nfrom dbo.ADF_Load_Metadata\nwhere active = 1",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -29,6 +26,95 @@
 						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "foreach_ingestion_loop",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "initial_ingestion_lookup",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('initial_ingestion_lookup').output.value",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "initial_copy",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"storeSettings": {
+										"type": "AzureBlobFSReadSettings",
+										"recursive": true,
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings"
+									}
+								},
+								"sink": {
+									"type": "AzureSqlSink",
+									"writeBehavior": "insert",
+									"sqlWriterUseTableLock": false
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "ADLS_Hospital_csv",
+									"type": "DatasetReference",
+									"parameters": {
+										"filename": {
+											"value": "@item().File_Name",
+											"type": "Expression"
+										},
+										"folderpath": {
+											"value": "@item().FilePath",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "AzureSQL_hospital_table",
+									"type": "DatasetReference",
+									"parameters": {
+										"tablename": {
+											"value": "@item().Table_Name",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
 				}
 			}
 		],

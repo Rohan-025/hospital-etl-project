@@ -6,10 +6,10 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"folderpath": {
+			"filename": {
 				"type": "string"
 			},
-			"filename": {
+			"folderpath": {
 				"type": "string"
 			}
 		},
@@ -25,10 +25,11 @@
 					"value": "@dataset().filename",
 					"type": "Expression"
 				},
-				"fileSystem": {
+				"folderPath": {
 					"value": "@dataset().folderpath",
 					"type": "Expression"
-				}
+				},
+				"fileSystem": "hospital-data"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
