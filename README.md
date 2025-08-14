@@ -9,6 +9,13 @@ Landing (hospital-data) >  Bronze  > Silver  > Gold
 
 (these are the containers in the  ADLS)
 
+Bronze     Silver          Gold
+
+Parquet    Delta Tables    Delta Tables
+
+Bronze- Parquet format source of truth
+Silver- Data cleaning, enrich, CDM (Common data model), SCD2
+Gold- Fact and dimension table
 
 ## creating the metadata table
 
