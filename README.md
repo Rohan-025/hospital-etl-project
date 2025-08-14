@@ -17,6 +17,13 @@ Bronze- Parquet format source of truth
 Silver- Data cleaning, enrich, CDM (Common data model), SCD2
 Gold- Fact and dimension table
 
+# Data
+
+EMR - (Tables) Azure SQL server, there are 2 sql server instances containing data from 2 hospitals
+Claims - (Flat files) in ADLS landing zone container
+
+
+
 ## creating the metadata table
 
 columns
