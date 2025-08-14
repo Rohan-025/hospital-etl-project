@@ -1,6 +1,15 @@
 # hospital-etl-project
 Metadata-driven ETL pipeline for hospital data using ADF and Azure SQL
 
+# Solution Architecture
+
+Medallion
+
+Landing (hospital-data) >  Bronze  > Silver  > Gold
+
+(these are the containers in the  ADLS)
+
+
 ## creating the metadata table
 
 columns
