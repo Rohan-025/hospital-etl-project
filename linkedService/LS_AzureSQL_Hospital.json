@@ -2,7 +2,7 @@
 	"name": "LS_AzureSQL_Hospital",
 	"properties": {
 		"parameters": {
-			"Databsename": {
+			"DatabaseName": {
 				"type": "string"
 			}
 		},
