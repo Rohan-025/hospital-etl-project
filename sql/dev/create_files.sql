@@ -13,3 +13,16 @@ CREATE TABLE dbo.patients (
     Address VARCHAR(255),
     ModifiedDate DATE
 );
+
+-- clonning the hospital DB new DB hospital_B DB
+
+-- create database [projecthospital_hospital_b]
+-- as copy of [projecthospital]
+
+
+-- dropping the tables from hospital_B DB after cloning
+
+drop TABLE dbo.ADF_Load_Metadata
+
+drop TABLE dbo.patients
+
