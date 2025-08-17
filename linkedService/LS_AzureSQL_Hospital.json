@@ -1,6 +1,11 @@
 {
 	"name": "LS_AzureSQL_Hospital",
 	"properties": {
+		"parameters": {
+			"Databsename": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
