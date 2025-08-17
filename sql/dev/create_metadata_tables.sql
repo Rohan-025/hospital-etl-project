@@ -5,28 +5,23 @@
 drop table if EXISTS dbo.ADF_Load_Metadata;
 
 create table dbo.ADF_Load_Metadata (
-    SourceName        NVARCHAR(128) primary KEY,
-    FilePath          NVARCHAR(400),  -- ADLS path or wildcard, e.g., 'raw/hospital/patient/*.csv'
-    FileFormat        NVARCHAR(10),   -- 'csv' or 'parquet'
-    TargetSchema      NVARCHAR(64),   -- 'dbo'
-    TargetTable       NVARCHAR(128),  -- 'Patient'
-    Active            BIT             -- enables/disables the mapping
-);
+    FilePath NVARCHAR(400),
+    File_Name NVARCHAR(100),
+    Table_Name NVARCHAR(50),
+    Active BIT
+)
+
 
 INSERT into dbo.ADF_Load_Metadata(
 
-    SourceName,
     FilePath,
-    FileFormat,
-    TargetSchema,
-    TargetTable,
+    File_Name,
+    Table_Name,
     Active
 )
 values(
-    'patient',
-    'raw/hospital/patient/*.csv',
-    'csv',
-    'dbo',
-    'patients',
+    'emr-data',
+    'patients.csv',
+    'dbo.Patients',
     1
 )
