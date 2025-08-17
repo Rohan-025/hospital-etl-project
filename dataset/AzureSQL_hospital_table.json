@@ -3,10 +3,19 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LS_AzureSQL_Hospital",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"DatabaseName": {
+					"value": "@dataset().DBname",
+					"type": "Expression"
+				}
+			}
 		},
 		"parameters": {
 			"tablename": {
+				"type": "string"
+			},
+			"DBname": {
 				"type": "string"
 			}
 		},

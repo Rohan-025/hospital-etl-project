@@ -95,7 +95,7 @@
 											"type": "Expression"
 										},
 										"folderpath": {
-											"value": "@item().FilePath",
+											"value": "@item().File_Path",
 											"type": "Expression"
 										}
 									}
@@ -108,6 +108,10 @@
 									"parameters": {
 										"tablename": {
 											"value": "@item().Table_Name",
+											"type": "Expression"
+										},
+										"DBname": {
+											"value": "@item().Database_Name",
 											"type": "Expression"
 										}
 									}
