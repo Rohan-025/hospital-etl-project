@@ -160,7 +160,10 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "LS_AzureSQL_Hospital",
-					"type": "LinkedServiceReference"
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"DatabaseName": "project1hospital"
+					}
 				},
 				"folder": {
 					"name": "datasets"
