@@ -21,7 +21,7 @@
 		},
 		"LS_AzureSQL_Hospital_properties_typeProperties_database": {
 			"type": "string",
-			"defaultValue": "project1hospital"
+			"defaultValue": "@{linkedService().DatabaseName}"
 		}
 	},
 	"variables": {
@@ -50,6 +50,11 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"parameters": {
+					"DatabaseName": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
@@ -115,10 +120,19 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "LS_AzureSQL_Hospital",
-					"type": "LinkedServiceReference"
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"DatabaseName": {
+							"value": "@dataset().DBname",
+							"type": "Expression"
+						}
+					}
 				},
 				"parameters": {
 					"tablename": {
+						"type": "string"
+					},
+					"DBname": {
 						"type": "string"
 					}
 				},
@@ -288,7 +302,7 @@
 													"type": "Expression"
 												},
 												"folderpath": {
-													"value": "@item().FilePath",
+													"value": "@item().File_Path",
 													"type": "Expression"
 												}
 											}
@@ -301,6 +315,10 @@
 											"parameters": {
 												"tablename": {
 													"value": "@item().Table_Name",
+													"type": "Expression"
+												},
+												"DBname": {
+													"value": "@item().Database_Name",
 													"type": "Expression"
 												}
 											}

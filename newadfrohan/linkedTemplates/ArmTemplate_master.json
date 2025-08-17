@@ -21,7 +21,7 @@
 		},
 		"LS_AzureSQL_Hospital_properties_typeProperties_database": {
 			"type": "string",
-			"defaultValue": "project1hospital"
+			"defaultValue": "@{linkedService().DatabaseName}"
 		},
 		"containerUri": {
 			"type": "string",

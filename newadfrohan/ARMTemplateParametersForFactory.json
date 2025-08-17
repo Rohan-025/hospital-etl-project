@@ -15,7 +15,7 @@
 			"value": "projecthospitalserver.database.windows.net"
 		},
 		"LS_AzureSQL_Hospital_properties_typeProperties_database": {
-			"value": "project1hospital"
+			"value": "@{linkedService().DatabaseName}"
 		}
 	}
 }
