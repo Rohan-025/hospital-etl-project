@@ -184,3 +184,150 @@ CREATE TABLE dbo.transactions (
     ModifiedDate date NOT NULL,
     CONSTRAINT PK_transactions PRIMARY KEY (TransactionID)
 );
+
+-- updating the value of active for patients table db hospital_B
+
+UPDATE dbo.ADF_Load_Metadata
+set active= 0
+where table_name = 'patients'
+
+-- also adding the database name to the patient table for hospital-A database
+
+insert into dbo.ADF_Load_Metadata(
+
+    DatabaseName
+)
+values(
+
+    'project1hospital'
+)
+
+
+
+-- Inserting values to metadata table for hopital-A
+
+-- patients table, alredy done thus active is 0
+
+INSERT into dbo.ADF_Load_Metadata(
+
+    Id,
+    File_Path,
+    File_Name,
+    Table_Name,
+    Database_Name,
+    Active
+)
+values(
+
+    '1',
+    'emr-data',
+    'patients.csv',
+    'dbo.Patients',
+    'project1hospital',
+    0
+)
+
+-- inserting for encounters
+
+INSERT into dbo.ADF_Load_Metadata(
+
+    Id,
+    File_Path,
+    File_Name,
+    Table_Name,
+    Database_Name,
+    Active
+)
+values(
+
+    '2',
+    'emr-data',
+    'encounters.csv',
+    'dbo.encounters',
+    'project1hospital',
+    1
+)
+
+-- inserting for departments
+
+INSERT into dbo.ADF_Load_Metadata(
+
+    Id,
+    File_Path,
+    File_Name,
+    Table_Name,
+    Database_Name,
+    Active
+)
+values(
+
+    '3',
+    'emr-data',
+    'departments.csv',
+    'dbo.departments',
+    'project1hospital',
+    1
+)
+
+-- inserting for providers
+
+INSERT into dbo.ADF_Load_Metadata(
+
+    Id,
+    File_Path,
+    File_Name,
+    Table_Name,
+    Database_Name,
+    Active
+)
+values(
+
+    '4',
+    'emr-data',
+    'providers.csv',
+    'dbo.providers',
+    'project1hospital',
+    1
+)
+
+
+-- inserting for transacitons
+
+INSERT into dbo.ADF_Load_Metadata(
+
+    Id,
+    File_Path,
+    File_Name,
+    Table_Name,
+    Database_Name,
+    Active
+)
+values(
+
+    '5',
+    'emr-data',
+    'transactions.csv',
+    'dbo.transactions',
+    'project1hospital',
+    1
+)
+
+
+
+-- Inserting values for hospuital_B DB
+
+
+INSERT INTO dbo.ADF_Load_Metadata (
+    Id,
+    File_Path,
+    File_Name,
+    Table_Name,
+    Database_Name,
+    Active
+)
+VALUES
+    (1, 'emr-data hospital-b', 'patients.csv',      'dbo.patients',      'project1hospital_hospital_B', 1),
+    (2, 'emr-data hospital-b', 'providers.csv',       'dbo.providers',       'project1hospital_hospital_B', 1),
+    (3, 'emr-data hospital-b', 'transactions.csv',  'dbo.transactions',  'project1hospital_hospital_B', 1),
+    (4, 'emr-data hospital-b', 'encounters.csv',   'dbo.encounters',   'project1hospital_hospital_B', 1),
+    (5, 'emr-data hospital-b',  'departments.csv',      'dbo.departments',      'project1hospital_hospital_B', 1);
