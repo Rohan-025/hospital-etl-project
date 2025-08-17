@@ -107,13 +107,14 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"tablename": {
-											"value": "@item().Table_Name",
+											"value": "@split(item().Table_Name, '.')[1]",
 											"type": "Expression"
 										},
 										"DBname": {
 											"value": "@item().Database_Name",
 											"type": "Expression"
-										}
+										},
+										"Schemaname": "@split(item().Table_Name, '.')[0]"
 									}
 								}
 							]

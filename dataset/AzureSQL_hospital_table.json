@@ -17,6 +17,9 @@
 			},
 			"DBname": {
 				"type": "string"
+			},
+			"Schemaname": {
+				"type": "string"
 			}
 		},
 		"folder": {
@@ -26,6 +29,10 @@
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
+			"schema": {
+				"value": "@dataset().Schemaname",
+				"type": "Expression"
+			},
 			"table": {
 				"value": "@dataset().tablename",
 				"type": "Expression"
