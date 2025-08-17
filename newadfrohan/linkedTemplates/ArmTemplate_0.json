@@ -134,6 +134,9 @@
 					},
 					"DBname": {
 						"type": "string"
+					},
+					"Schemaname": {
+						"type": "string"
 					}
 				},
 				"folder": {
@@ -143,6 +146,10 @@
 				"type": "AzureSqlTable",
 				"schema": [],
 				"typeProperties": {
+					"schema": {
+						"value": "@dataset().Schemaname",
+						"type": "Expression"
+					},
 					"table": {
 						"value": "@dataset().tablename",
 						"type": "Expression"
@@ -317,13 +324,14 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"tablename": {
-													"value": "@item().Table_Name",
+													"value": "@split(item().Table_Name, '.')[1]",
 													"type": "Expression"
 												},
 												"DBname": {
 													"value": "@item().Database_Name",
 													"type": "Expression"
-												}
+												},
+												"Schemaname": "@split(item().Table_Name, '.')[0]"
 											}
 										}
 									]
