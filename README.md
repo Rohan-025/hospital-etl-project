@@ -22,6 +22,41 @@ Gold- Fact and dimension table
 EMR - (Tables) Azure SQL server, there are 2 sql server instances containing data from 2 hospitals
 Claims - (Flat files) in ADLS landing zone container
 
+# storage account - rohannewaccount1
+
+-- landing 
+-- bronze
+-- silver
+-- bronze
+-- config (for creating metadata deriven pipeline)
+    -- emr data
+            -- load_config.csv
+
+## we will be creating a metadriven pipeline
+
+-- IR
+
+    -- LS
+        ADLS
+        Azure SQL server
+        azure key vault
+        delta lake
+
+
+    -- datasets
+
+        Delimited text - ADLS Gen 2 (file name/ filepath/ fileformat)
+        Tables -         AZURE SQL (server databasename/ schemaname/ tablename)
+        Parquet -        ADLS gen 2   
+        Delta Table-     Azure delta table
+
+-- now we are making a generic ls thus the db name is not defined at the ls level we will dynamically add it
+-- pipeline
+        data set
+                ls  
+    now this heirarchy is sor tof imp, cause we pass the value of the param at any lvl and it flows thorugh every level
+    thus we will pass the param of db name in the pipeline or data set synamically not in the ls itself
+
 
 
 ## creating the metadata table
@@ -39,6 +74,7 @@ TargetSchema	Allows you to support multiple schemas/namespaces in SQL Server.
 TargetTable	The main table to load data into.
 
 Active	Lets you enable/disable configs without deleting them (easy rollback/versioning).
+
 
 NVARCHAR vs VARCHAR in SQL Server
 1. NVARCHAR (National Variable Character)
