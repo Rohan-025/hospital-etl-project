@@ -1,0 +1,42 @@
+{
+	"name": "AzureSQLDB_hospital_project",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSQLServer_hospital_project_LS",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"db_name": {
+					"value": "@dataset().db_name",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"schema_name": {
+				"type": "string"
+			},
+			"table_name": {
+				"type": "string"
+			},
+			"db_name": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "datasets_hospital_project"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().schema_name",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().table_name",
+				"type": "Expression"
+			}
+		}
+	}
+}
