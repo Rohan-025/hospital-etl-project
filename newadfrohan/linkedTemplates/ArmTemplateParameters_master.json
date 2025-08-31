@@ -5,8 +5,20 @@
 		"factoryName": {
 			"value": "newadfrohan"
 		},
+		"AzureDataLakeStorage_hospital_project_LS_accountKey": {
+			"value": ""
+		},
 		"LS_ADLS_Hospital_accountKey": {
 			"value": ""
+		},
+		"AzureDataLakeStorage_hospital_project_LS_properties_typeProperties_url": {
+			"value": "https://rohannewaccount1.dfs.core.windows.net/"
+		},
+		"AzureSQLServer_hospital_project_LS_properties_typeProperties_server": {
+			"value": "projecthospitalserver.database.windows.net"
+		},
+		"AzureSQLServer_hospital_project_LS_properties_typeProperties_database": {
+			"value": "@{linkedService().db_name}"
 		},
 		"LS_ADLS_Hospital_properties_typeProperties_url": {
 			"value": "https://rohannewaccount1.dfs.core.windows.net/"
