@@ -1,0 +1,9 @@
+{
+	"name": "newadfrohan",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "0b4ab826-94c2-41f8-b204-7f49cb36b163",
+		"tenantId": "db3ee97c-30e6-411b-8ebe-984158827e29"
+	}
+}

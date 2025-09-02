@@ -1,0 +1,19 @@
+{
+	"name": "LS_AzureSQL_Hospital",
+	"properties": {
+		"parameters": {
+			"DatabaseName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "projecthospitalserver.database.windows.net",
+			"database": "@{linkedService().DatabaseName}",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SystemAssignedManagedIdentity"
+		}
+	}
+}

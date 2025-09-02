@@ -1,0 +1,44 @@
+{
+	"name": "ADLS_parquet_hospital_project",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage_hospital_project_LS",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"container_name": {
+				"type": "string"
+			},
+			"file_name": {
+				"type": "string"
+			},
+			"file_path": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "datasets_hospital_project"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().file_name",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().file_path",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().container_name",
+					"type": "Expression"
+				}
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
