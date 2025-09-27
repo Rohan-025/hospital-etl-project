@@ -169,152 +169,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/AzureSQL_hospital_table')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_AzureSQL_Hospital",
-					"type": "LinkedServiceReference",
-					"parameters": {
-						"DatabaseName": {
-							"value": "@dataset().DBname",
-							"type": "Expression"
-						}
-					}
-				},
-				"parameters": {
-					"tablename": {
-						"type": "string"
-					},
-					"DBname": {
-						"type": "string"
-					},
-					"Schemaname": {
-						"type": "string"
-					}
-				},
-				"folder": {
-					"name": "datasets"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {
-					"schema": {
-						"value": "@dataset().Schemaname",
-						"type": "Expression"
-					},
-					"table": {
-						"value": "@dataset().tablename",
-						"type": "Expression"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_AzureSQL_Hospital')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureSQL_non_param')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_AzureSQL_Hospital",
-					"type": "LinkedServiceReference",
-					"parameters": {
-						"DatabaseName": "project1hospital"
-					}
-				},
-				"folder": {
-					"name": "datasets"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "SourceName",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FilePath",
-						"type": "nvarchar"
-					},
-					{
-						"name": "FileFormat",
-						"type": "nvarchar"
-					},
-					{
-						"name": "TargetSchema",
-						"type": "nvarchar"
-					},
-					{
-						"name": "TargetTable",
-						"type": "nvarchar"
-					},
-					{
-						"name": "Active",
-						"type": "bit"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "ADF_Load_Metadata"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LS_AzureSQL_Hospital')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureSQLDB_hospital_project')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureSQLServer_hospital_project_LS",
-					"type": "LinkedServiceReference",
-					"parameters": {
-						"db_name": {
-							"value": "@dataset().db_name",
-							"type": "Expression"
-						}
-					}
-				},
-				"parameters": {
-					"schema_name": {
-						"type": "string"
-					},
-					"table_name": {
-						"type": "string"
-					},
-					"db_name": {
-						"type": "string"
-					}
-				},
-				"folder": {
-					"name": "datasets_hospital_project"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [],
-				"typeProperties": {
-					"schema": {
-						"value": "@dataset().schema_name",
-						"type": "Expression"
-					},
-					"table": {
-						"value": "@dataset().table_name",
-						"type": "Expression"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSQLServer_hospital_project_LS')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/ADLS_flatfiles_hospital_project')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -413,6 +267,152 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage_hospital_project_LS')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSQLDB_hospital_project')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSQLServer_hospital_project_LS",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"db_name": {
+							"value": "@dataset().db_name",
+							"type": "Expression"
+						}
+					}
+				},
+				"parameters": {
+					"schema_name": {
+						"type": "string"
+					},
+					"table_name": {
+						"type": "string"
+					},
+					"db_name": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "datasets_hospital_project"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": {
+						"value": "@dataset().schema_name",
+						"type": "Expression"
+					},
+					"table": {
+						"value": "@dataset().table_name",
+						"type": "Expression"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSQLServer_hospital_project_LS')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSQL_hospital_table')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_AzureSQL_Hospital",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"DatabaseName": {
+							"value": "@dataset().DBname",
+							"type": "Expression"
+						}
+					}
+				},
+				"parameters": {
+					"tablename": {
+						"type": "string"
+					},
+					"DBname": {
+						"type": "string"
+					},
+					"Schemaname": {
+						"type": "string"
+					}
+				},
+				"folder": {
+					"name": "datasets"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": {
+						"value": "@dataset().Schemaname",
+						"type": "Expression"
+					},
+					"table": {
+						"value": "@dataset().tablename",
+						"type": "Expression"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_AzureSQL_Hospital')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSQL_non_param')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_AzureSQL_Hospital",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"DatabaseName": "project1hospital"
+					}
+				},
+				"folder": {
+					"name": "datasets"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "SourceName",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FilePath",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FileFormat",
+						"type": "nvarchar"
+					},
+					{
+						"name": "TargetSchema",
+						"type": "nvarchar"
+					},
+					{
+						"name": "TargetTable",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Active",
+						"type": "bit"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "ADF_Load_Metadata"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LS_AzureSQL_Hospital')]"
 			]
 		},
 		{
@@ -555,6 +555,61 @@
 				"[concat(variables('factoryId'), '/datasets/AzureSQL_non_param')]",
 				"[concat(variables('factoryId'), '/datasets/ADLS_Hospital_csv')]",
 				"[concat(variables('factoryId'), '/datasets/AzureSQL_hospital_table')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/hospital_emr_src_to_landing')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "lookup_emr_configs",
+						"type": "Lookup",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"dataset": {
+								"referenceName": "ADLS_flatfiles_hospital_project",
+								"type": "DatasetReference",
+								"parameters": {
+									"container_name": "configs",
+									"file_path": "emr",
+									"file_name": "load_config.csv"
+								}
+							},
+							"firstRowOnly": false
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "pipelines"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ADLS_flatfiles_hospital_project')]"
 			]
 		}
 	]
